@@ -1,0 +1,52 @@
+name: slm
+
+services:
+  hub:
+    image: selenium/hub:latest
+    container_name: hub
+    networks:
+    - grid
+    ports:
+    - "4442-4444:4442-4444"
+
+  browser-firefox:
+    image: selenium/node-firefox:latest
+    networks:
+    - grid
+    shm_size: '2gb'
+    ports:
+    - "7900:7900"
+    environment:
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    - SE_EVENT_BUS_HOST=hub
+
+  browser-firefox-2:
+    image: selenium/node-firefox:latest
+    networks:
+    - grid
+    shm_size: '2gb'
+    ports:
+    - "7902:7900"
+    environment:
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    - SE_EVENT_BUS_HOST=hub
+
+
+  browser-chrome:
+    image: selenium/node-chrome:latest
+    networks:
+    - grid
+    shm_size: '2gb'
+    ports:
+    - "7901:7900"
+    environment:
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    - SE_EVENT_BUS_HOST=hub
+
+
+networks:
+  grid:
+    driver: bridge

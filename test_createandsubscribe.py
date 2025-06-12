@@ -5,6 +5,7 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
@@ -18,7 +19,8 @@ class TestCreateandsubscribe():
     service = Service(executable_path='./browsers/chromedriver-linux64/chromedriver')
     options = ChromeOptions()
     options.binary_location = './browsers/chrome-linux64/chrome'
-    self.driver = webdriver.Chrome(options=options, service=service)
+    self.driver = webdriver.Remote(command_executor='http://localhost:4444', options = FirefoxOptions())
+    self.driver = webdriver.Remote(command_executor='http://localhost:4444', options = ChromeOptions())
     self.vars = {}
   
   def teardown_method(self, method):
