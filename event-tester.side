@@ -1,0 +1,225 @@
+{
+  "id": "2494a0e1-dd60-422d-bab3-7d7d4ce54127",
+  "version": "2.0",
+  "name": "event-tester",
+  "url": "http://localhost:5000",
+  "tests": [{
+    "id": "d99e8dd0-cfa6-4abd-a913-34c344337949",
+    "name": "create-and-subscribe",
+    "commands": [{
+      "id": "76cb72f4-d5ae-42ae-825c-b7b9fa538b14",
+      "comment": "",
+      "command": "open",
+      "target": "/events",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96b2a38d-fdd8-4acb-bed0-3f9af40ade9d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1015x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "577dc812-a990-4389-8af0-917ff6ce434f",
+      "comment": "",
+      "command": "click",
+      "target": "css=body",
+      "targets": [
+        ["css=body", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c542a82d-4829-414c-b874-ba68b3b73026",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(3)", "css:finder"],
+        ["xpath=//li[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23795caa-c9e6-4098-90aa-5424ee439de9",
+      "comment": "",
+      "command": "click",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5373f41-e4db-4166-8782-fa8d75b15e43",
+      "comment": "",
+      "command": "type",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "marathon"
+    }, {
+      "id": "c9478ee9-fd11-4fdf-9a7e-8258551ec735",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(3)",
+      "targets": [
+        ["css=div:nth-child(3)", "css:finder"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84ee692f-4e7f-4204-91c5-370ec6a26937",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='New']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5e4bae3d-23f1-4fa6-9e15-07655d290ab1",
+      "comment": "",
+      "command": "click",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "29f3540e-a515-4348-8bd1-58dd0688ffa3",
+      "comment": "",
+      "command": "type",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "semi marathon"
+    }, {
+      "id": "d97c4464-c920-47ff-9ee1-70b79a13525d",
+      "comment": "",
+      "command": "click",
+      "target": "id=is_free",
+      "targets": [
+        ["id=is_free", "id"],
+        ["name=is_free", "name"],
+        ["css=#is_free", "css:finder"],
+        ["xpath=//input[@id='is_free']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b8e0f91-fa39-40fb-80e6-178ccfec2d9b",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='New']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "06f91943-ce88-497b-b8c8-0e7c406183b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e76501b-5cd4-4587-80e0-dc330dd5b3a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=event_title",
+      "targets": [
+        ["id=event_title", "id"],
+        ["name=event_title", "name"],
+        ["css=#event_title", "css:finder"],
+        ["xpath=//input[@id='event_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "portes ouvertes"
+    }, {
+      "id": "b94a959f-61d0-497b-a303-55f9ae3796fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='New']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60c8e168-adc5-46fe-b753-d0616e37fa2d",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(4) > a",
+      "targets": [
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'marathon')])[2]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/event/4')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d38f163-5e11-462f-a1c1-716a2ac3cfe8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Subscribe for free",
+      "targets": [
+        ["linkText=Subscribe for free", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Subscribe for free')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/event/4/subscribe')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Subscribe for free')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "975a9b75-6997-47bc-bec8-c769606208fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6f8b9881-bfd8-4b88-abce-c6a7d063d0d9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d99e8dd0-cfa6-4abd-a913-34c344337949"]
+  }],
+  "urls": ["http://localhost:5000/"],
+  "plugins": []
+}

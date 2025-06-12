@@ -33,3 +33,7 @@ Tests de performance :
 * JMeter par la fondation Apache
 
 Intégrer les tests dans un pipeline Jenkins
+
+### Selenium navigateurs
+
+[Télécharger Chrome et ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
