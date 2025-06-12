@@ -15,6 +15,11 @@
     {% endfor %}
     </ul>
     <h1>New event</h1>
+    {% if error_msg %}
+      <div style="color: red;">
+        {{ error_msg }}
+      </div>
+    {% endif %}
     <form method="POST" action="{{ url_for('new_event') }}">
       <div>
         <label for="event_title">Title</label>

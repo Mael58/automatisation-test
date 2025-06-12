@@ -63,3 +63,10 @@ def test_new_event_free(client, event_title, is_free):
     response_events = client.get('/events')
     assert response_events.status_code == 200
     assert event_title.encode() in response_events.data
+
+def test_new_event_missing_event_title(client):
+    response = client.post('/event', data = {
+        'is_free': False
+    })
+    assert response.status_code == 400
+    assert b'missing event title' in response.data

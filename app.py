@@ -27,6 +27,8 @@ def event(event_id=None):
 
 @app.route("/event", methods=["POST"])
 def new_event():
+    if 'event_title' not in request.form:
+        return render_template('events.html', events=app.config.get("events"), error_msg='missing event title'), 400
     event_title = request.form["event_title"]
     event_is_free = 'is_free' in request.form
     global global_id
