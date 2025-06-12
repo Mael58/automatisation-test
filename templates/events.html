@@ -15,14 +15,14 @@
     {% endfor %}
     </ul>
     <h1>New event</h1>
-    <form method="POST" action="/new">
+    <form method="POST" action="{{ url_for('new_event') }}">
       <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" />
+        <label for="event_title">Title</label>
+        <input type="text" id="event_title" name="event_title" />
       </div>
       <div>
-        <label for="title">Free</label>
-        <input type="checkbox" id="free" name="free" value="1" />
+        <label for="is_free">Free</label>
+        <input type="checkbox" id="is_free" name="is_free" checked="1" />
       </div>
       <div>
         <input type="submit" value="New" />
