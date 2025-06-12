@@ -15,7 +15,7 @@ def index():
 
 @app.route("/events")
 def events():
-    return render_template("events.html")
+    return render_template("events.html", events=app.config.get("events"))
 
 
 @app.route("/event/<int:event_id>")
