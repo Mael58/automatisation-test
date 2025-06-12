@@ -10,9 +10,9 @@
   <body>
     <h1>Events</h1>
     <ul>
-      <li><a href="">event 1</a></li>
-      <li>event 2</li>
-      <li>event 3</li>
+    {% for event in events %}
+      <li><a href="/event/{{ event.event_id }}">{{ event.event_title }}</a></li>
+    {% endfor %}
     </ul>
     <h1>New event</h1>
     <form method="POST" action="/new">
