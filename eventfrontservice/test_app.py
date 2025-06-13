@@ -1,5 +1,7 @@
 import pytest
 from eventfrontservice.app import app as befe
+from paymentservice.app import PaymentSvc
+from models.payment_pb2 import PayReply, PayRequest
 
 @pytest.fixture
 def app():
@@ -87,14 +89,54 @@ def test_subscribe_event_not_free(client, mocker):
     assert b'event 3' in response.data
     assert b'Payment refused' not in response.data
 
-# def test_subscribe_event_not_free_payment_refused(client, mocker):
-#     mocker.patch('grpc.insecure_channel') #FIXME
-#     response = client.post('/event/3/subscribe', data = {
-#         'price': 200.2,
-#         'card_id': 120,
-#         'event_id': 3,
-#         'user_id': 12        
-#     })
-#     assert response.status_code == 200
-#     assert b'event 3' in response.data
-#     assert b'Payment refused' in response.data
+
+def test_subscribe_event_not_free_payment_refused(client, mocker):
+    mock_stub = mocker.MagicMock()
+    mock_stub.Pay.return_value.status = False
+
+    mocker.patch('eventfrontservice.app.PaymentStub', return_value=mock_stub)
+
+    response = client.post('/event/3/subscribe', data={
+        'card_id': 120,
+        'event_id': 3,
+        'user_id': 12
+    })
+
+    assert response.status_code == 200
+    assert b'event 3' in response.data
+    assert b'Payment refused' in response.data
+
+
+
+
+def test_payment_svc_accepted(mocker):
+    mocker.patch("paymentservice.app.random.randint", return_value=1)
+
+    svc = PaymentSvc()  
+    request = PayRequest(
+        amount=100.0,
+        card_number=12367,
+        event_id=23,
+        user_id=1
+    )
+
+    response = svc.Pay(request, None)
+
+    assert isinstance(response, PayReply)
+    assert response.status is True
+    
+def test_payment_svc_payment_refused(mocker):
+    mocker.patch("paymentservice.app.random.randint", return_value=0)
+
+    svc = PaymentSvc()  
+    request = PayRequest(
+        amount=100.0,
+        card_number=12367,
+        event_id=23,
+        user_id=1
+    )
+
+    response = svc.Pay(request, None)
+
+    assert isinstance(response, PayReply)
+    assert response.status is False

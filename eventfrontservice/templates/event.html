@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>BEFE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  </head>
-  <body>
-    <h1>{{ event.event_title }}</h1>
-    {% if event.already_registered %}
-    <a href="/event/{{ event.event_id }}/cancel">Cancel</a>
-    {% else %} {% if event.is_free %}
-    <a href="/event/{{ event.event_id }}/subscribe">Subscribe for free</a>
-    {% else %}
-    {% if error_msg %}
-    <div style="background-color: lightcoral;color: red;">
-      {{ error_msg }}
-    </div>
-    {% endif %}
-    <form method="POST" action="/event/{{ event.event_id }}/subscribe">
-      <input
-        type="hidden"
-        id="event_id"
-        name="event_id"
-        value="{{ event.event_id }}"
-      />
-      <div>
-        <label for="card_id">ID Card</label>
-        <input type="text" id="card_id" name="card_id" />
-      </div>
-      <div>
-        <label for="user_id">Username</label>
-        <input type="text" id="user_id" name="user_id" />
-      </div>
-      <div>
-        <input type="submit" value="Pay to subscribe" />
-      </div>
-    </form>
-    {% endif %} {% endif %}
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>BEFE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+  <h1>{{ event.event_title }}</h1>
+  {% if error_msg %}
+  <h2>{{ error_msg }}</h2>
+  {% endif %}
+
+  {% if event.already_registered %}
+  <a href="/event/{{ event.event_id }}/cancel">Cancel</a>
+  {% else %} {% if event.is_free %}
+  <a href="/event/{{ event.event_id }}/subscribe">Subscribe for free</a>
+  {% else %}
+  {% if error_msg %}
+  <div style="background-color: lightcoral;color: red;">
+    {{ error_msg }}
+  </div>
+  {% endif %}
+  <form method="POST" action="/event/{{ event.event_id }}/subscribe">
+    <input type="hidden" id="event_id" name="event_id" value="{{ event.event_id }}" />
     <div>
-      <a href="/events">Back to events</a>
+      <label for="card_id">ID Card</label>
+      <input type="text" id="card_id" name="card_id" />
     </div>
-  </body>
+    <div>
+      <label for="user_id">Username</label>
+      <input type="text" id="user_id" name="user_id" />
+    </div>
+    <div>
+      <input type="submit" value="Pay to subscribe" />
+    </div>
+  </form>
+  {% endif %} {% endif %}
+  <div>
+    <a href="/events">Back to events</a>
+  </div>
+</body>
+
 </html>

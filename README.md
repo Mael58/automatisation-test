@@ -55,3 +55,16 @@ Exécuter des tests de performance avec K6
 ```bash
 docker run --rm -u $(id -u) -e K6_WEB_DASHBOARD=true -e K6_WEB_DASHBOARD_EXPORT=html-report.html -v $PWD:/app -w /app -p 5665:5665 grafana/k6 run /app/script.js
 ```
+
+### Coverage 
+
+Lancer le test de couverture du projet 
+```bash
+coverage run -m pytest
+```
+
+Pour avoir un rendu directement dans le terminal
+
+```bash
+coverage report
+```
