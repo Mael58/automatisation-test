@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import payment_pb2 as payment__pb2
+from models import payment_pb2 as models_dot_payment__pb2
 
 GRPC_GENERATED_VERSION = '1.73.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in payment_pb2_grpc.py depends on'
+        + f' but the generated code in models/payment_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class PaymentStub(object):
         """
         self.Pay = channel.unary_unary(
                 '/Payment/Pay',
-                request_serializer=payment__pb2.PayRequest.SerializeToString,
-                response_deserializer=payment__pb2.PayReply.FromString,
+                request_serializer=models_dot_payment__pb2.PayRequest.SerializeToString,
+                response_deserializer=models_dot_payment__pb2.PayReply.FromString,
                 _registered_method=True)
 
 
@@ -55,8 +55,8 @@ def add_PaymentServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Pay': grpc.unary_unary_rpc_method_handler(
                     servicer.Pay,
-                    request_deserializer=payment__pb2.PayRequest.FromString,
-                    response_serializer=payment__pb2.PayReply.SerializeToString,
+                    request_deserializer=models_dot_payment__pb2.PayRequest.FromString,
+                    response_serializer=models_dot_payment__pb2.PayReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -84,8 +84,8 @@ class Payment(object):
             request,
             target,
             '/Payment/Pay',
-            payment__pb2.PayRequest.SerializeToString,
-            payment__pb2.PayReply.FromString,
+            models_dot_payment__pb2.PayRequest.SerializeToString,
+            models_dot_payment__pb2.PayReply.FromString,
             options,
             channel_credentials,
             insecure,
