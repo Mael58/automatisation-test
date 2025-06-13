@@ -2,7 +2,13 @@ import { Client, StatusOK } from 'k6/net/grpc';
 import { check, sleep } from 'k6';
 
 export const options = {
-  iterations: 10,
+  executor: 'ramping-vus',
+  startVUs: 0,
+  stages: [
+    { target: 10, duration: '20s'},
+    { target: 15, duration: '10s' },
+    { target: 0, duration: '10s' },
+  ]
 };
 
 const client = new Client();
@@ -23,8 +29,10 @@ export default () => {
     'status is OK': (r) => r && r.status === StatusOK,
   });
 
-  console.log(JSON.stringify(response.status));
+  check(response, {
+    'status payment is OK': (r) => r.message['status']
+  })
 
   client.close();
-  sleep(1);
+  sleep(10);
 };
