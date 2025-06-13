@@ -49,9 +49,10 @@ def new_event():
 @app.route('/event/<int:event_id>/subscribe', methods=["POST"])
 def subscribe(event_id=None):
     event = find_event(event_id)
-    amount = event['price']
-    user_id = request.form['user_id']
-    card_number = request.form['card_id']
+    amount = float(event['price'])
+    user_id = int(request.form['user_id'])
+    card_number = int(request.form['card_id'])
+    error_msg = None
     if event and not event['is_free']:
         response = None
         with grpc.insecure_channel("localhost:50051") as channel:
@@ -63,14 +64,12 @@ def subscribe(event_id=None):
                 user_id=user_id
             )
             response = stub.Pay(pay_request)
-        if response and response.status:
-            #FIXME: link user_id and event
-            return render_template('payment.html'), 200
-        else:
-            return render_template('payment.html', error_msg=error_msg), 400
+        if response and not response.status:
+            error_msg = 'Payment refused'
+        return render_template('event.html', event=event, error_msg=error_msg)
     if event and event['is_free']:
         print('register')
-        return redirect('event')
+        return redirect('/events')
 
 
 def find_event(event_id):

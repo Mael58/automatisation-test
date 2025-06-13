@@ -14,7 +14,12 @@
     {% else %} {% if event.is_free %}
     <a href="/event/{{ event.event_id }}/subscribe">Subscribe for free</a>
     {% else %}
-    <form method="POST" action="/pay">
+    {% if error_msg %}
+    <div style="background-color: lightcoral;color: red;">
+      {{ error_msg }}
+    </div>
+    {% endif %}
+    <form method="POST" action="/event/{{ event.event_id }}/subscribe">
       <input
         type="hidden"
         id="event_id"

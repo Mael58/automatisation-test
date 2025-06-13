@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from tese860.models import payment_pb2 as models_dot_payment__pb2
+from modelspayment import payment_pb2 as models_dot_payment__pb2
 
 GRPC_GENERATED_VERSION = '1.73.0'
 GRPC_VERSION = grpc.__version__

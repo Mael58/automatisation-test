@@ -1,7 +1,7 @@
 import grpc
 from concurrent import futures
-from models.payment_pb2_grpc import PaymentServicer, add_PaymentServicer_to_server
-from models.payment_pb2 import PayReply
+from modelspayment.payment_pb2_grpc import PaymentServicer, add_PaymentServicer_to_server
+from modelspayment.payment_pb2 import PayReply
 import random
 import logging
 
@@ -9,7 +9,8 @@ class PaymentSvc(PaymentServicer):
 
     def Pay(self, request, context):
         payment_is_ok = random.randint(0, 1)
-        return PayReply(payment_is_ok == 1)
+        logging.info(f'{request.user_id} requested to pay {request.amount} with card {request.card_number} for event {request.event_id}: status => {payment_is_ok}')
+        return PayReply(status = payment_is_ok == 1)
 
 def serve():
     port = "50051"

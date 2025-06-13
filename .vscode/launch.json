@@ -11,7 +11,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "event-front-service/app.py",
+                "FLASK_APP": "eventfrontservice",
                 "FLASK_DEBUG": "1"
             },
             "args": [
@@ -19,7 +19,7 @@
                 "--no-debugger",
                 "--no-reload",
                 "--host",
-                "172.21.0.1"
+                "127.0.0.1"
             ],
             "jinja": true,
             "autoStartBrowser": false
