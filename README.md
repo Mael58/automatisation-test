@@ -37,3 +37,13 @@ Intégrer les tests dans un pipeline Jenkins
 ### Selenium navigateurs
 
 [Télécharger Chrome et ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
+
+## GRPC
+
+commande pour générer les fichiers Python à partir du fichier proto
+
+se positionner à la racine du projet global
+
+```bash
+python -m grpc_tools.protoc -I. --python_out=. --pyi_out=. --grpc_python_out=. models/payment.proto
+```

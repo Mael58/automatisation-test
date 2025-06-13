@@ -1,0 +1,16 @@
+syntax="proto3";
+
+service Payment {
+    rpc Pay(PayRequest) returns (PayReply){}
+}
+
+message PayRequest {
+    int32 card_number = 1;
+    int32 event_id = 2;
+    int32 user_id = 3;
+    float amount = 4;
+}
+
+message PayReply {
+    bool status = 1;
+}
