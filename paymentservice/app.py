@@ -1,7 +1,7 @@
 import grpc
 from concurrent import futures
-from modelspayment.payment_pb2_grpc import PaymentServicer, add_PaymentServicer_to_server
-from modelspayment.payment_pb2 import PayReply
+from models.payment_pb2_grpc import PaymentServicer, add_PaymentServicer_to_server
+from models.payment_pb2 import PayReply
 import random
 import logging
 

@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect
 import grpc
+import sys
+import os
 
+sys.path.insert(0, os.path.basename(os.path.curdir))
 from models.payment_pb2_grpc import PaymentStub
 from models.payment_pb2 import PayRequest, PayReply
 
