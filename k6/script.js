@@ -8,7 +8,8 @@ export const options = {
     { target: 10, duration: '20s'},
     { target: 15, duration: '10s' },
     { target: 0, duration: '10s' },
-  ]
+  ],
+  gracefulRampDown: '2s'
 };
 
 const client = new Client();

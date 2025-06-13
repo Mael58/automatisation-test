@@ -67,7 +67,7 @@ def subscribe(event_id=None):
                 user_id=user_id
             )
             response = stub.Pay(pay_request)
-        if response and not response.status:
+        if response is None or response and not response.status:
             error_msg = 'Payment refused'
         return render_template('event.html', event=event, error_msg=error_msg)
     if event and event['is_free']:

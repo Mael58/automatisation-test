@@ -1,6 +1,5 @@
 import pytest
-from app import app as befe
-
+from eventfrontservice.app import app as befe
 
 @pytest.fixture
 def app():
@@ -13,24 +12,28 @@ def app():
                     "event_title": "event 1",
                     "is_free": True,
                     "already_registered": False,
+                    "price": 0
                 },
                 {
                     "event_id": 2,
                     "event_title": "event 2",
                     "is_free": True,
                     "already_registered": True,
+                    "price": 0
                 },
                 {
                     "event_id": 3,
                     "event_title": "event 3",
                     "is_free": False,
                     "already_registered": False,
+                    "price": 421
                 },
                 {
                     "event_id": 4,
                     "event_title": "event 4",
                     "is_free": False,
                     "already_registered": True,
+                    "price": 102
                 },
             ],
         }
@@ -70,3 +73,28 @@ def test_new_event_missing_event_title(client):
     })
     assert response.status_code == 400
     assert b'missing event title' in response.data
+
+
+def test_subscribe_event_not_free(client, mocker):
+    mocker.patch('grpc.insecure_channel')
+    response = client.post('/event/3/subscribe', data = {
+        'price': 200.2,
+        'card_id': 120,
+        'event_id': 3,
+        'user_id': 12        
+    })
+    assert response.status_code == 200
+    assert b'event 3' in response.data
+    assert b'Payment refused' not in response.data
+
+def test_subscribe_event_not_free_payment_refused(client, mocker):
+    mocker.patch('grpc.insecure_channel') #FIXME
+    response = client.post('/event/3/subscribe', data = {
+        'price': 200.2,
+        'card_id': 120,
+        'event_id': 3,
+        'user_id': 12        
+    })
+    assert response.status_code == 200
+    assert b'event 3' in response.data
+    assert b'Payment refused' in response.data

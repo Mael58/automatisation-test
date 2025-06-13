@@ -47,3 +47,11 @@ se positionner à la racine du projet global
 ```bash
 python -m grpc_tools.protoc -I. --python_out=. --pyi_out=. --grpc_python_out=. models/payment.proto
 ```
+
+### Tests de performance
+
+Exécuter des tests de performance avec K6
+
+```bash
+docker run --rm -u $(id -u) -e K6_WEB_DASHBOARD=true -e K6_WEB_DASHBOARD_EXPORT=html-report.html -v $PWD:/app -w /app -p 5665:5665 grafana/k6 run /app/script.js
+```
